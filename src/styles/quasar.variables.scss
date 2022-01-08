@@ -1,0 +1,16 @@
+// It's highly recommended to change the default colors
+// to match your app's branding.
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+
+$primary   : #106cc8;
+$secondary : #26A69A;
+$accent    : #9C27B0;
+
+$dark      : #1D1D1D;
+
+$positive  : #21BA45;
+$negative  : #C10015;
+$info      : #31CCEC;
+$warning   : #F2C037;
+
+@import '~quasar-variables-styl'

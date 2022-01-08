@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <q-layout class="main" view="lHh Lpr lFf">
+    <q-header></q-header>
+
+    <q-page-container>
+      <router-view></router-view>
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapActions } from 'vuex';
+import QHeader from "./components/QHeader.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    QHeader
+  },
+  methods: {
+    ...mapActions(["getListUsers"]),
+  },
+  created() {
+    this.getListUsers();
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+.main {
+  font-family: 'Nunito', sans-serif;
 }
 </style>
