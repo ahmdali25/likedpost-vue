@@ -5,6 +5,8 @@ const adminModule = {
   state: {
 		postsById: [],
 		editedPost: {},
+    readPost: {},
+    comments: [],
 	},
 	getters: {
 		getListsById(state) {
@@ -13,6 +15,12 @@ const adminModule = {
 		getEditedPost(state) {
       return state.editedPost;
     },
+    getReadPost(state) {
+      return state.readPost;
+    },
+    getComments(state) {
+      return state.comments;
+    }
   },
   mutations: {
 		setListsPostById(state, payload) {
@@ -20,6 +28,12 @@ const adminModule = {
     },
 		setEditPostById(state, payload) {
       state.editedPost = payload;
+    },
+    setReadPostById(state, payload) {
+      state.readPost = payload;
+    },
+    setComments(state, payload) {
+      state.comments = payload;
     }
 	},
   actions: {
@@ -38,6 +52,14 @@ const adminModule = {
           console.log(res.data);
           alert("Edit post berhasil!, cek console.log")
         }
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async getCommentsById({commit}, id) {
+      try {
+        let res = await axiosEngine.get(`/posts/${id}/comments`);
+        commit("setComments", res.data);
       } catch (err) {
         console.log(err);
       }
@@ -67,6 +89,12 @@ const adminModule = {
       commit("setModal", true);
       commit("setEditPostById", payload)
       router.push({ name: "Edit", params: { id: payload.id} });
+    },
+    showModalRead({commit, dispatch}, payload) {
+      commit("setModal", true);
+      commit("setReadPostById", payload)
+      dispatch("getCommentsById", payload.id);
+      router.push({ name: "Read", params: { id: payload.id} });
     },
     showModalDelete({commit}) {
       commit("setModalDelete", true);

@@ -3,7 +3,7 @@
       <q-card class="card">
         <q-toolbar class="card-header">
           <q-toolbar-title>
-            <span class="text-weight-bold text-h6 text-white">{{ title }}</span>
+            <span class="text-capitalize text-weight-bold text-h6 text-white">{{ title }}</span>
           </q-toolbar-title>
           <q-btn @click="$router.go(-1)" flat round dense icon="close" color="white" v-close-popup />
         </q-toolbar>
@@ -40,7 +40,7 @@ export default {
 @import '../styles/quasar.scss';
 
 .card {
-  width: 400px;
+  max-width: 500px;
   max-height: 500px;
 
   .card-header {

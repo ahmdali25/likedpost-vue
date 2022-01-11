@@ -4,7 +4,7 @@
       <div v-for="list in getListsById" :key="list.id" bordered separator>
         <div class="list-card">
           <div class="list-wrapper">
-            <p class="list-title" overline>{{ list.title }}</p>
+            <p class="list-title" @click="readItem(list)" overline>{{ list.title }}</p>
             <p class="list-body">{{ list.body }}</p>
           </div>
           <div class="icon-wrapper">
@@ -43,6 +43,9 @@ export default {
     editItem(data) {
       this.$store.dispatch("showModalEdit", data);
     },
+    readItem(data) {
+      this.$store.dispatch("showModalRead", data);
+    },
     deleteItem(data) {
       this.data = data;
       this.$store.dispatch("showModalDelete", data);
@@ -73,6 +76,7 @@ style <style lang="scss" scoped>
       .list-title {
         font-size: 18px;
         color: #000;
+        cursor: pointer;
         
         &::first-letter {
           text-transform: capitalize;

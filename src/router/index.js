@@ -6,6 +6,7 @@ import Admin from '@/views/Admin.vue'
 import LikedPost from '@/views/LikedPost.vue'
 import Create from '@/views/Create.vue'
 import Edit from '@/views/Edit.vue'
+import Read from '@/views/Read.vue'
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
         path: 'posts/:id/edit',
         name: 'Edit',
         component: Edit
+      },
+      {
+        path: 'posts/:id',
+        name: 'Read',
+        component: Read
       },
     ]
   },
