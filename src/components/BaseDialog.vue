@@ -40,7 +40,7 @@ export default {
 @import '../styles/quasar.scss';
 
 .card {
-  max-width: 500px;
+  min-width: 400px;
   max-height: 500px;
 
   .card-header {
