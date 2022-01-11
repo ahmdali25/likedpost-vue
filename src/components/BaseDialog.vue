@@ -1,6 +1,6 @@
 <template>
     <q-dialog v-model="getModal">
-      <q-card>
+      <q-card class="card">
         <q-toolbar class="card-header">
           <q-toolbar-title>
             <span class="text-weight-bold text-h6 text-white">{{ title }}</span>
@@ -39,7 +39,12 @@ export default {
 <style lang="scss" scoped>
 @import '../styles/quasar.scss';
 
-.card-header {
-  background-color: $primary;
+.card {
+  width: 400px;
+  max-height: 500px;
+
+  .card-header {
+    background-color: $primary;
+  }
 }
 </style>

@@ -21,7 +21,7 @@
                 />
               </q-card-section>
 
-              <q-card-actions align="right">
+              <q-card-actions align="center">
                 <q-btn
                   type="reset"
                   @click="$router.go(-1)"
@@ -34,7 +34,7 @@
                 />
                 <q-btn
                   type="submit"
-                  label="Submit"
+                  label="Save"
                   color="primary"
                   padding="xs lg"
                   no-caps

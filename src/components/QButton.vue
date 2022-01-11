@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <q-btn @click="btnClick" flat :color="color" :text-color="textColor" :label="label" />
-  </div>
+    <div>
+        <q-btn @click="btnClick" flat :color="color" :text-color="textColor" :label="label" />
+    </div>
 </template>
 
 <script>
@@ -20,6 +20,6 @@ export default {
 			type: String,
 		}
 	},
-emits: ["btnClick"],
+  emits: ["btnClick"],
 }
 </script>

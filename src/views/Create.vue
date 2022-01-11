@@ -22,7 +22,7 @@
               />
             </q-card-section>
 
-            <q-card-actions align="right">
+            <q-card-actions align="center">
               <q-btn
                 type="reset"
                 @click="$router.go(-1)"
