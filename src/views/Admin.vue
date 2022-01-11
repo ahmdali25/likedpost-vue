@@ -16,7 +16,7 @@
 
       <q-dialog-delete :data="data"></q-dialog-delete>
 
-      <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-page-sticky position="bottom-right" :offset="[18, 40]">
         <q-btn @click="showModalAdd" fab icon="add" color="accent" />
       </q-page-sticky>
     </div>

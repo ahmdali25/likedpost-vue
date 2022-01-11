@@ -24,7 +24,7 @@ export default {
   name: "Login",
 	props: ["data"],
   computed: {
-     getDialogDelete: {
+    getDialogDelete: {
       get() {
         return this.$store.state.dialogDelete;
       },

@@ -1,62 +1,68 @@
 <template>
-    <q-dialog v-model="getModal">
-      <q-card>
-          <q-toolbar class="card-header">
-            <q-toolbar-title>
-              <span class="text-weight-bold text-h6 text-white">Create Post</span>
-            </q-toolbar-title>
-
-            <q-btn @click="$router.go(-1)" flat round dense icon="close" color="white" v-close-popup />
-          </q-toolbar>
-
-          <q-card-section class="q-pl-xl q-pr-xl">
-            <q-form
-          ref="myForm"
-          @submit="onSubmit"
-          @reset="onReset"
-          class="q-gutter-md">
+    <base-dialog :title="dialogTitle">
+      <template #cardSection>
+         <q-form
+            ref="myForm"
+            @submit="onSubmit"
+            @reset="onReset"
+            class="q-gutter-md">
             <q-card-section style="max-height: 50vh" class="scroll">
-            <q-input
-              v-model="post.title"
-              label="Title"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Title harus diisi']"
-            />
-
-            <q-input
-              v-model="post.body"
-              type="textarea"
-              label="Body"
-              autogrow
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Body harus diisi']"
-            />
+              <BaseInput
+                v-model="post.title"
+                type="text"
+                label="Title"
+                :rules="titleRules"
+              />
+              <BaseInput
+                v-model="post.body"
+                type="textarea"
+                label="Body"
+                autogrow
+                :rules="bodyRules"
+              />
             </q-card-section>
 
             <q-card-actions align="right">
-              <q-btn type="reset" @click="$router.go(-1)" label="Cancel" color="white" text-color="black" padding="xs lg" no-caps v-close-popup />
-              <q-btn type="submit" label="Save" color="primary" padding="xs lg" no-caps v-close-popup />
+              <q-btn
+                type="reset"
+                @click="$router.go(-1)"
+                label="Cancel"
+                color="white"
+                text-color="black"
+                padding="xs lg"
+                no-caps
+                v-close-popup
+              />
+              <q-btn
+                type="submit"
+                label="Save"
+                color="primary"
+                padding="xs lg"
+                no-caps
+                v-close-popup
+              />
             </q-card-actions>
-            </q-form>
-          </q-card-section>
-      </q-card>
-    </q-dialog>
+          </q-form>
+      </template>
+    </base-dialog>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import BaseDialog from "../components/BaseDialog.vue";
+import BaseInput from "../components/BaseInput.vue";
 
 export default {
-    name: "Edit",
+    name: "Create",
+    components: { BaseDialog, BaseInput },
     data: () => ({
+      dialogTitle: "Create Post",
       post: {
         title: "",
         body: "",
       },
+      titleRules: [val => val && val.length > 0 || 'Title harus diisi'],
+      bodyRules: [val => val && val.length > 0 || 'Body harus diisi']
     }),
-    computed: {
-        ...mapGetters(["getModal"]),
-    },
     methods: {
       onSubmit() {
         let post = {
