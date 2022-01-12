@@ -1,6 +1,13 @@
 <template>
-    <base-dialog :title="getReadPost.title">
-      <template #cardSection>
+    <q-dialog v-model="getModal">
+      <q-card class="card">
+         <q-toolbar class="card-header">
+          <q-toolbar-title>
+            <span class="text-capitalize text-weight-bold text-h6 text-white">{{ getReadPost.title }}</span>
+          </q-toolbar-title>
+          <q-btn @click="$router.go(-1)" flat round dense icon="close" color="white" v-close-popup />
+        </q-toolbar>
+
         <q-card-section>
           <p class="read-body">{{ getReadPost.body }}</p>
         </q-card-section>
@@ -13,25 +20,35 @@
             </div>
           </div>
         </q-card-section>
-      </template>
-    </base-dialog>
+      </q-card>
+    </q-dialog>
 </template>
 
 <script>
-import BaseDialog from "../components/BaseDialog.vue";
 import { mapGetters } from 'vuex';
 
 export default {
     name: "Edit",
-    components: { BaseDialog },
     computed: {
       ...mapGetters(["getReadPost", "getComments"]),
+      getModal: {
+        get() {
+          return this.$store.state.dialog;
+        },
+        set(v) {
+          this.$store.commit("setModal", v);
+        },
+      },
     },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../styles/quasar.scss';
+
+.card-header {
+    background-color: $primary;
+}
 
 .read-body {
   &::first-letter {
